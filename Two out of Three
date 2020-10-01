@@ -1,0 +1,32 @@
+vector<int> Solution::solve(vector<int> &A, vector<int> &B, vector<int> &C) {
+    map<int, int> m;
+    set<int> s;
+    for(auto i: A) {
+        if(s.find(i) == s.end()) {
+            m[i]++;
+            s.insert(i);
+        }
+    }
+    s.clear();
+    for(auto i: B) {
+        if(s.find(i) == s.end()) {
+            m[i]++;
+            s.insert(i);
+        }
+    }
+    s.clear();
+    for(auto i: C) {
+        if(s.find(i) == s.end()) {
+            m[i]++;
+            s.insert(i);
+        }
+    }
+    
+    vector<int> answer;
+    for(auto i: m) {
+        if(i.second >= 2)
+            answer.push_back(i.first);
+    }
+    
+    return answer;
+}
