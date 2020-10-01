@@ -1,0 +1,17 @@
+int Solution::solve(vector<int> &A) {
+    
+    int minValue = INT_MAX;
+    map<int, int> m;
+    for(int i=0; i<A.size(); i++) {
+        if(m.find(A[i]) == m.end()) {
+            m[A[i]]=i;
+        } else {
+            minValue = min(minValue, m[A[i]]);
+        }
+    }
+    
+    if(minValue == INT_MAX)
+        return -1;
+    else
+        return A[minValue];
+}
