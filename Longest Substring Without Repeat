@@ -1,0 +1,19 @@
+int Solution::lengthOfLongestSubstring(string A) {
+    int count=0;
+    int i=0, j=0;
+    
+    set<char> s;
+    while(j<A.length()) {
+        if(s.find(A[j]) == s.end()) {
+            s.insert(A[j]);
+            int temp = s.size();
+            count = max(count, temp);
+            j++;
+        } else {
+            s.erase(A[i]);
+            i++;
+        }
+    }
+    
+    return count;
+}
