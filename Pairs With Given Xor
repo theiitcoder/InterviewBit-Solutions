@@ -1,0 +1,17 @@
+int Solution::solve(vector<int> &A, int B) {
+   
+    int answer = 0;
+        
+    set<int> s;
+    
+    for(int i=0; i<A.size(); i++) {
+        int xorValue = B^A[i];
+        
+        if(s.find(xorValue) != s.end()) {
+            answer++;
+        }
+        
+        s.insert(A[i]);
+    }
+    return answer;
+}
