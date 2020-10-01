@@ -1,0 +1,50 @@
+/**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+ #include<bits/stdc++.h>
+int Solution::solve(TreeNode* A) {
+    queue<TreeNode*> q1;
+    queue<TreeNode*> q2;
+    
+    int maxValue = INT_MIN;
+    
+    TreeNode* temp = A;
+    q1.push(temp);
+    int sum=0;
+    while(!q1.empty() || !q2.empty()) {
+        sum=0;
+        while(!q1.empty()) {
+            temp = q1.front();
+            q1.pop();
+            sum += temp->val;
+            if(temp->left) 
+                q2.push(temp->left);
+            
+            if(temp->right)
+                q2.push(temp->right);
+        }
+        
+        maxValue = max(sum, maxValue);
+        sum=0;
+        while(!q2.empty()) {
+            temp = q2.front();
+            q2.pop();
+            sum += temp->val;
+            if(temp->left) 
+                q1.push(temp->left);
+            
+            if(temp->right)
+                q1.push(temp->right);
+        }
+        
+        maxValue = max(sum, maxValue);
+        
+    }
+    return maxValue;
+}
