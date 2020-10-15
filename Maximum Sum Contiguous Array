@@ -1,0 +1,11 @@
+int Solution::maxSubArray(const vector<int> &A) {
+    int sum = 0;
+    int maxValue = INT_MIN;
+    for(int i: A) {
+        sum += i;
+        maxValue = max(maxValue, sum);
+        if(sum < 0)
+            sum = 0;
+    }
+    return maxValue;
+}
